@@ -1,0 +1,149 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây
+tại local
+	- git init
+	- touch c1.txt
+	- git add c1.txt
+	- git commit -m "Add c1.txt"
+	- touch c2.txt
+	- git add c2.txt
+	- git commit -m "Add c2.txt"
+	- touch c3.txt
+	- git add c3.txt
+	- git commit -m "Add c3.txt"
+	
+	- git checkout -b feature
+	- touch c4.txt
+	- git add c4.txt
+	- git commit -m "Add c4.txt"
+	- touch c5.txt
+	- git add c5.txt
+	- git commit -m "Add c5.txt"
+	
+	- git checkout -b bug master
+	- touch c6.txt
+	- git add c6.txt
+	- git commit -m "Add c6.txt"
+	- touch c7.txt
+	- git add c7.txt
+	- git commit -m "Add c7.txt"
+	- touch c8.txt
+	- git add c8.txt
+	- git commit -m "Add c8.txt"
+	
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+
+	- git checkout feature
+	- git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+
+	- git checkout bug
+	- git rebase feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+
+	Giống: đều dùng để gộp nhánh.
+	
+	Khác: 
+		-Khi dùng merge nó sẽ tự tạo thêm 1 commit, commit này là con nối 2 nhánh lại với nhau. Và khi mình xem log thì các commit sẽ sắp xếp theo
+	thời gian thực khi commit.
+		-Khi dùng rebase số lượng commit vẫn giữ nguyên. Và khi xem log thì các commit sẽ sắp xếp theo thứ tự: commit của nhánh cần gộp vào --> commit của nhánh HEAD
+		đang trỏ tới. Và các commit của nhánh đang trỏ tới này sẽ bị thay đổi hash code.
+		
+	-push code mà bị reject 
+	-git fetch
+	-Khi gộp code ta sẽ sử dụng rebase: git rebase origin/remote_branch
+	-git push origin HEAD:remote_branch
+	
+	Còn merge sẽ sử dụng khi gộp 2 nhánh của dự án
+
+5. Phân biệt git fetch và git clone
+	-Khi máy local chưa có repo thì mình sẽ dùng git clone còn đã có thì dùng fetch
+	
+6. Phân biệt git fetch và git pull
+	-git pull = git fetch + git merge
+	-vd: git pull origin todo-app-1.0 == git fetch origin todo-app-1.0 + git merge origin/todo-app-1.0
+
+7. Phân biệt git pull và git pull --rebase
+	-git pull = git fetch + git merge
+	-git pull --rebase = git fetch + git rebase
+	
+8. Git log dùng để làm gì
+	-Show ra các commit của workingdirectory
+	
+9. Git status dùng để làm gì
+	-Xem trạng thái của workingdirectory có sự thay đổi nào so với lần cuối cùng mình commit
+	
+10. Git add dùng để làm gì
+	- Đưa 1 hay nhiều file ở trạng thái unmodified vào trạng thái staged
+	
+11. Git commit dùng để làm gì
+	-Khi làm xong 1 chức năng và mình cần lưu lại code và ghi chú code đó làm chức năng gì thì mình sẽ commit.
+	
+12. Mô tả lệnh để tạo branch ở local
+	git branch new_branch old_branch
+
+13. Mô tả lệnh để xóa branch ở local
+	-git branch -d name_branch
+
+14. Mô tả lệnh để xóa branch ở remote
+	-git branch origin -d name_branch
+	
+15. Nhánh trung gian là gì
+	-Là nhánh 
+	
+16. Detach HEAD là gì
+	-Là trạng thái con trỏ HEAD trỏ trực tiếp đến 1 commit, khi này nếu mình tạo thêm commit thì các commit này sẽ không thuộc nhánh nào cả và sẽ xảy ra trường hợp khó
+	tìm lại code.
+	
+17. Phân biệt HEAD và BRANCH
+	HEAD:
+	+ Con trỏ
+	+ Chỉ có duy nhất 1 con trỏ head
+	+ Trỏ đc đến branch, commit
+	+ Đại diện cho working directory
+	+ có thể di chuyển mọi nơi thông qua checkout
+
+	BRANCH:
+	+ Con trỏ
+	+ Trỏ đc đến commit
+	+ Đại diện cho 1 version của project
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+	-Có 
+	C1: Xóa commit xóa luôn nội dung:
+		git reset --hard HEAD~n(n là số lượng commit tính từ commit hiện tại)
+		
+	C2: xóa commit giữ lại nội dung
+		git reset --soft HEAD~n
+		file sẽ về trạng thái Staged
+	
+	C3: Đổi tên nhánh có chứa commit cần xóa, tạo 1 nhánh mới với tên là tên của nhánh cũ và nó trỏ đến hash_code của commit trước những commit cần xóa. Và sau đó xóa
+	nhánh mà mình đã đổi tên đi
+		git branch -m old_branch new_branch
+		git checkout -b old_branch hash_code
+		git branch -D new_branch
+	
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+	-Untracked: file mới đc tạo và nó chưa đc quản lí bởi git
+	-Modified: Sau khi commit thì các file sẽ về trạng thái Modified.
+	-Unmodified: khi sửa 1 file đã đc commit 1 lần thì file sẽ về trạng thái unmodified.
+	-Staged: file ở trạng thái unmodified sau khi đc add sẽ đổi thành trạng thái staged, khi này file có thể commit.
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+	-Xác định Task đó làm cho version nào.
+	-Xác định Task đó thuộc nhánh nào.
+	-git fetch
+	-git checkout -b Task_abc origin/remote_branch
+	-coding
+	-add, commit, push
+	
+	vd: Task  Kiểm tra 1 số có phải là số dương không : positive.txt ở REMOTE BRANCH: todo-app-5.0
+	git fetch
+	git checkout -b task_positive origin/todo-app-5.0
+	coding tạo file : touch positive.txt
+	git add positive.txt
+	git commit -m "Add function positive"
+	git fetch (để cho chắc)
+	git push origin HEAD:todo-app-5.0
+	
+	
