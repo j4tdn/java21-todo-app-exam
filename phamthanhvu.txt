@@ -1,0 +1,165 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây
+tại local
+
+touch c1.txt
+git add c1.txt
+git commit -m "Add c1 function"
+
+touch c2.txt
+git add c2.txt
+git commit -m "Add c2 function"
+
+touch c3.txt
+git add c3.txt
+git commit -m "Add c3 function"
+
+git checkout -b feature master
+
+touch c4.txt
+git add c4.txt
+git commit -m "Add c4 function"
+
+touch c5.txt
+git add c5.txt
+git commit -m "Add c5 function"
+
+git checkout -b bug master
+
+touch c6.txt
+git add c6.txt
+git commit -m "Add c6 function"
+
+touch c7.txt
+git add c7.txt
+git commit -m "Add c7 function"
+
+touch c8.txt
+git add c8.txt
+git commit -m "Add c8 function"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+
+git checkout feature
+git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+
+git checkout bug
+
+git rebase feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+
+Giống nhau : Dùng để gộp nhánh 
+
+Khác nhau : 
+- Mergre : + Dùng để gộp 2 commit mới nhất của 2 nhánh lại với nhau tạo thành một commit mới so sánh từ commit cha
+           + Fix conflict ít
+           + Số lượng commit sau khi gộp tăng
+           + Nên sử dụng khi gộp 2 dự án có nhiều commit 
+- Rebase : + Dùng để gộp các commit của nhánh này vào commit mới của nhánh kia, so sánh commit của nhánh này với nhánh kia, rồi gộp vào. Tiếp tục gộp commit tiếp theo vào commit vừa gộp cho đến hết. 
+           + Nếu conflict thì fix nhiều hay ít tùy trường hợp
+           + Số lượng commit không đổi sau khi gộp
+           + Nên sử dụng khi push code lên và bị reject (git fetch, git rebase)
+
+
+5. Phân biệt git fetch và git clone
+
+- Fetch : Khi local đã ánh xạ/liên kết với repo, khi dùng git fetch thì local sẽ nhận những branch và commit trong branch mới nhất từ repo.
+
+- Clone : Khi local chưa ánh xạ/liên kết với repo, khi dùng git clone thì local sẽ ánh xạ/liên kết với repo và chứa những branch và commit trong brach của repo.
+
+6. Phân biệt git fetch và git pull
+
+- Fetch : Dùng để lấy các branch và các commit trong branch về local.
+
+- Pull : Dùng để lấy các branch và các commit trong branch về local. Và, gộp commit mới nhất ở local mà head đang trỏ đến vào branch của remote
+
+7. Phân biệt git pull và git pull --rebase
+
+- git pull : Là lệnh bao gôm git fetch và git merge
+
+- git pull --rebase : Là lệnh bao gôm git fetch và git rebase 
+8. Git log dùng để làm gì
+
+- git log dùng để hiện thị thời gian, người thực hiện các commit trong dự án đang làm.
+
+9. Git status dùng để làm gì
+
+- git status dùng để kiểm tra trạng thái của file
+
+10. Git add dùng để làm gì
+- git add dùng để đưa file vào trạng thái stage
+
+11. Git commit dùng để làm gì
+
+- git commit dùng để đưa file vào trạng thái unmodifed, tạo ra như một chức năng của version với message nào đó thể hiện chức năng ấy.
+
+12. Mô tả lệnh để tạo branch ở local
+
+git branch ten_nhanh
+
+13. Mô tả lệnh để xóa branch ở local
+
+git branch -D ten_nhanh_can_xoa'
+
+14. Mô tả lệnh để xóa branch ở remote
+
+git push origin ten_nhanh_can_xoa -d
+
+15. Nhánh trung gian là gì
+
+Nhánh trung gian là nhánh được tạo ra để liên kết giữa các nhánh ở remote và local
+
+16. Detach HEAD là gì
+
+Detach HEAD : là các commit khi được HEAD trỏ đến
+
+17. Phân biệt HEAD và BRANCH
+
+HEAD : + Con trỏ chỉ đến branch
+       + Khi HEAD không trỏ đến branch thì khi commit, HEAD nhảy lên
+
+Branch : + Là nhánh đại diện cho một version của dự án
+         + Khi HEAD trỏ đến brach thì khi commit, HEAD và branch đểu nhảy lên
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+
+Có 2 cách để xóa commit : 
+
+- Cách 1 : Xóa commit nhưng giữ lại nội dung
+
+
+- Cách 2 : Xóa commit, xóa luôn nội dung
+
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+
+Có 4 trạng thái của file trong git : 
+
+- untrack : Lúc file vừa được tạo ra
+
+- stage : Khi add file vừa được tạo ra, dùng lệnh git add
+
+- unmodified : Khi commit file vừa add, dùng git commit
+
+- modified : Khi chỉnh sửa nội dung file đã commit
+
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+
+Ví dụ : Nhận làm task 22 từ MAY-VERSION-1.0 của dự án MAY
+
+B1 : Xác định xem task mình vừa nhận nằm ở version nào
+    - task 22 nằm ở version 1.0
+B2 : Xác định xem version có nhánh nào chứa task mình cần làm
+    - task 22 nằm trong nhánh pham-thanh-vu-task
+    - git checkout pham-thanh-vu-task
+B3 : Coding
+    - touch vumay.txt
+B4 : git add vumay.txt
+     git commit -m "Add vumay function"
+B5 : Push code lên dự án
+     git push origin MAY-VERSION-1.0
+  - Nếu push bị reject : git fetch
+                         git rebase origin/MAY-VERSION-1.0
