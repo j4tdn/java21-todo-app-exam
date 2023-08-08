@@ -1,0 +1,100 @@
+1. Vi?t chuong trình/l?nh trong t?p tin hoten.txt mô t? các bu?c th?c hi?n so d? git tree sau dây
+t?i local
+	git init
+	git touch c1.txt
+	git add c1.txt
+	git commit -m "Add c1"
+	git touch c2.txt
+	git add c2.txt
+	git commit -m "Add c2"
+	git touch c3.txt
+	git add c3.txt
+	git commit -m "Add c3"
+	git checkout -b feature master
+	git touch c4.txt
+	git add c4.txt
+	git commit -m "Add c4"
+	git touch c5.txt
+	git add c5.txt
+	git git commit -m "Add c5"
+	git checkout -b bug master
+	git touch c6.txt
+	git add c6.txt
+	git git commit -m "Add c6"
+	git touch c7.txt
+	git add c7.txt
+	git commit -m "Add c7"
+	git touch c8.txt
+	git add c8.txt
+	git commit -m "Add c8"	
+
+2. Vi?t l?nh th?c hi?n g?p nhánh bug vào nhánh feature s? d?ng git merge
+	git checkout feature
+	git merge bug
+
+3. Vi?t l?nh th?c hi?n g?p nhánh feature vào bug s? d?ng git rebase
+	git checkout bug
+	git rebase feature
+
+4. Phân bi?t git merge và git rebase(gi?ng, khác nhau, khi nào nên s? d?ng)
+	Gi?ng nhau: d?u dùng d? g?p nhánh
+	Khác nhau
+	 + git merge: g?p 2 commit cu?i c?a 2 nhánh v?i nhau
+	 + git rebase: l?y t?ng commit c?a nhánh g?p, g?p v?i commit cu?i cùng c?a nhánh th?c hi?n g?p
+	 + Khi nào có quá nhi?u commit không nên th?c hi?n rebase
+
+5. Phân bi?t git fetch và git clone
+	git clone: sao chép c? 1 d? án v? dùng cho tru?ng h?p d? án chua có s?n ? local, ch? s? d?ng 1 l?n
+	
+	git fetch: l?y code m?i nh?t c?a d? án v?, dùng cho dã có s?n d? án ? local, s? d?ng nhi?u l?n
+	
+
+6. Phân bi?t git fetch và git pull
+7. Phân bi?t git pull và git pull --rebase
+
+8. Git log dùng d? làm gì
+	Dùng d? xem thông tin các commit, các nhánh, nhánh hi?n t?i
+
+9. Git status dùng d? làm gì
+	Dùng d? ki?m tra tình tr?ng các file dang th?c hi?n
+
+10. Git add dùng d? làm gì
+	Dùng d? thêm các thêm file vào tr?ng thái STAGGED
+
+11. Git commit dùng d? làm gì
+	Dùng d? thêm các s?a d?i m?i nh?t d? GIT qu?n lý
+
+12. Mô t? l?nh d? t?o branch ? local
+	git branch new_branch old_branch
+
+13. Mô t? l?nh d? xóa branch ? local
+	git branch -d branch_name
+	git branch -D branch_name
+
+14. Mô t? l?nh d? xóa branch ? remote
+	git push origin --delete remote_branch
+
+15. Nhánh trung gian là gì
+	Nhánh trung gian dùng d? luu thanh d?i t?m th?i các file gi?a local và remote
+
+16. Detach HEAD là gì
+17. Phân bi?t HEAD và BRANCH
+	HEAD: tr? vào commit hi?n t?i dang du?c s? d?ng
+	Branch: là các nhánh c?a d? án, có th? có nhi?u branch
+
+18. Có m?y cách d? xóa commit, mô t? và cho ví d?
+	có 2 cách:
+		+ Xóa luôn n?i dung commit:
+		 git reset --hard HEAD~n(s? lu?ng commit tính t? commit hi?n t?i)
+		 git reset --hard HEAD~1
+		
+		+Gi? n?i dung commit
+		 git reset --soft HEAD~n(s? lu?ng commit tính t? commit hi?n t?i)
+		 git reset --soft HEAD~1
+
+19. Li?t kê các tr?ng thái c?a file trong git, gi?i thích t?ng tr?ng thái
+	Untracked: chua du?c git qu?n lý
+	Modified: file m?i du?c update
+	Stagged: tr?ng thái s?n sàng d? commit
+	Unmodified: file không có thay d?i
+20. Mô t? các bu?c c?n th?c hi?n khi nh?n 1 task t? d? án, cho ví d?
