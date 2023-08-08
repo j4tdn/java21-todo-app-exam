@@ -1,0 +1,152 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây
+tại local
+
+git init
+touch c1.txt
+git add .
+git commit -m "1"
+
+touch c2.txt
+git add .
+git commit -m "2"
+
+touch c3.txt
+git add .
+git commit -m "3"
+
+git checkout -b feature master
+
+touch c4.txt
+git add .
+git commit -m "4"
+
+touch c5.txt
+git add .
+git commit -m "5"
+
+git checkout -b bug master
+
+touch c6.txt
+git add .
+git commit -m "6"
+
+touch c7.txt
+git add .
+git commit -m "7"
+
+touch c8.txt
+git add .
+git commit -m "8"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+
+git checkout feature
+git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+
+git checkout bug
+git rebase feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+
+giống nhau:
+commit thu được sau khi gộp là giống nhau
+khác nhau:
+-merge: tạo ra 1 commit mới, nếu bị conflict thì chỉ sửa 1 lần
+-rebase: không tạo ra commit mới, có thể bị conflict nhiều lần
+
+5. Phân biệt git fetch và git clone
+
+fetch thì giữa remote và local đã được liên kết vói nhau
+clone thì được sửa dụng khi local và remote chưa được liên kết ánh xạ với nhau
+
+6. Phân biệt git fetch và git pull
+
+fetch thì chỉ tải dữ liệu từ remote về local
+pull thì vừa tải dữ liệu về và thực hiện gộp nhánh 
+
+7. Phân biệt git pull và git pull --rebase
+
+lệch pull là bằng lệnh fetch cộng với merge
+còn pull --rebase là bằng lệnh fetch cộng với rebase
+
+8. Git log dùng để làm gì
+
+xem lịch sử các lần đã commit
+
+9. Git status dùng để làm gì
+
+kiểm tra trạng thái của các file trong thư mục làm việc
+
+10. Git add dùng để làm gì
+
+thêm file vào trạng thái stage để chuẩn bị commit
+
+11. Git commit dùng để làm gì
+
+tạo 1 commit lưa lại tất cả các file trong thư mục làm việc
+
+12. Mô tả lệnh để tạo branch ở local
+
+-git branch [branch_name] commit_hash
+-git branch [branch_name]
+-git branch [new_branch_name] [now_branch_name] 
+
+13. Mô tả lệnh để xóa branch ở local
+
+-git branch -d [branch_name]
+-git branch -D [branch_name]
+
+14. Mô tả lệnh để xóa branch ở remote
+
+git push origin remote_branch -d
+git push origin remote_branch -D
+
+15. Nhánh trung gian là gì
+
+là nhánh ở remote được fetch về local
+
+16. Detach HEAD là gì
+
+
+
+17. Phân biệt HEAD và BRANCH
+
+HEAD thì chỉ có duy nhất 1 HEAD, được trỏ đến branch hay commit bất kỳ
+BRANCH thì có thể có nhiều, chỉ trỏ được đến commit
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+
+Có 2 cách:
+-Xóa luôn nội dung: git reset --hard HEAD~n(số commit từ commit hiện tại)
+Vd ta đang có commit lần lượt là A1, A2, A3
+Thực hiện lệch git reset --hard HEAD~2
+Thì HEAD hiện tại sẽ ở commit A1 và các nội dung đã sửa ở commit A2 và A3 sẽ mất hết
+
+-Xóa vẫn giữ nội dung: git reset --soft HEAD~n(số commit từ commit hiện tại)
+Như trên khi ta gõ lệnh git reset --soft HEAD~2
+Thì HEAD hiện tại sẽ ở commit A1 nhưng các nội dung đã sửa vẫn giữ nguyên và chờ commit tiếp theo
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+
+-Untracked: file vừa tạo và có thể đã được chỉnh sửa
+-Staged: file vừa được add
+-Unmodified: file vừa được commit
+-Modified: file đã được commit và được chỉnh sửa lại
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+
+-biết task này thực hiện cho version nào, được thực hiện trên branch nào của version đó
+-fetch dự án từ remote về máy local
+-tạo branch từ nhánh trung gian
+-làm các chức năng từ nhánh vừa tạo
+-push lên lại remote
+
+vd:
+git fetch
+git checkout -b task111 origin/todo-app-exam
+touch exam.txt
+git add .
+git commit -m "Task 111 add file exam.txt"
+git push origin HEAD:todo-app-exam

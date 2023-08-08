@@ -1,0 +1,118 @@
+git init 
+touch c1.txt
+git add .
+git commit -m"add c1.txt"
+touch c2.txt
+git add .
+git commit -m"add c2.txt"
+touch c3.txt
+git add .
+git commit -m"add c3.txt"
+
+git branch feature main
+git checkout feature
+touch c4.txt
+git add .
+git commit -m"add c4.txt"
+touch c5.txt
+git add .
+git commit -m"add c5.txt"
+
+git branch bug main
+git checkout bug
+touch c6.txt
+git add .
+git commit -m"add c6.txt"
+touch c7.txt
+git add .
+git commit -m"add c7.txt"
+touch c8.txt
+git add .
+git commit -m"add c8.txt"
+
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+git checkout feature
+git merge bug
+
+
+
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+git checkout bug
+git rebase feature
+  
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+ - merge và rebase đều có lệch sủ dụng để gộp nhánh giống nhau , và đều sử dụng để gộp 2 nhánh khác nhau . Đều tìm điểm cha chung , nếu có xung đột mới fix
+- merge : sẽ tạo ra 1 commit " merge " ( commit mới ) commit này sẽ bao gồm phần code fix cho xung đột giữa những commit nhánh A VÀ NHỮng commit B
+- rebase : sẽ lấy trực tiếp commit cuối của nhánh A gộp với commit đầu của nhánh B ( kể từ điểm cha chung ) tạo ra commit mới rồi tiếp tục lấy commit mới đó ghép với commit tiếp theo .
+=> sử dụng merge khi có quá nhiều commit , vì khi sử dụng rebase chúng ta phải ngồi fix từng xung đột nếu có quá nhiều commit thig sẽ rất mệt 
+=> sử dụng rebase để vẽ nhánh đẹp hơn số lượng commit vẫn dữ nguyên .
+
+5. Phân biệt git fetch và git clone
+fetch là đã có res ở local và cập nhật phiên bản mới nhất về máy 
+clone là sử dụng khi ở local chưa có bất kì cái gì , kể cả git 
+
+6. Phân biệt git fetch và git pull
+fetch là nạp , cập nhật phiên bản mới nhất 
+pull = fetch + merge : là nạp và gộp nhánh trung gian vào nhánh remote 
+
+7. Phân biệt git pull và git pull --rebase
+pull = pull + merge = tạo commit thêm 1 commit mới 
+pull --rebase = pull + rebase = tạo commit mới nhưng ko thay đổi số lượng
+
+8. Git log dùng để làm gì
+- Dùng để coi lại thông tin , sự thay đổi từng commit 
+và còn có thể thêm một vài lệnh để coi kĩ hơn , về nhánh , ..
+git log --oneline --all --decorate --graph
+
+9. Git status dùng để làm gì
+-Dùng để coi trạng thái của file dữ liệu 
+có 4 trạng thái untracked , unmodifiled , modifiled , staged
+
+10. Git add dùng để làm gì
+để thêm các file đang ở trạng thái untracket , unmodifiled , modifiled vào trạng thái staged để sẵn sàng được add vào commit .
+
+11. Git commit dùng để làm gì
+Dùng để add file ở trạng thái staged vào commit 
+
+12. Mô tả lệnh để tạo branch ở local
+git branch A B
+tạo nhánh A từ B
+
+13. Mô tả lệnh để xóa branch ở local
+đưa head về branch đó
+git branch -D
+
+14. Mô tả lệnh để xóa branch ở remote
+git branch -D branch
+
+15. Nhánh trung gian là gì
+16. Detach HEAD là gì
+là head trỏ vào commit
+
+17. Phân biệt HEAD và BRANCH
+Head trỏ vào branch hoặc commit đều được
+branch chỉ trỏ vào commit 
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+có 2 cách xoá commit 
+1 là xoá luôn dữ liệu
+2 là xoá dữ lại dữ liệu
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+có 4 trạng thái untracked , unmodifiled , modifiled , staged
+trạng thái staged để sẵn sàng được add vào commit .
+unmodìiled là đã được commit 
+modifiled là đã chỉnh sữa
+còn lại đều ở untracked
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+xác định task đó thuộc phiên bản nào , và Nhánh nào 
+
+
+
+
+
+
+
