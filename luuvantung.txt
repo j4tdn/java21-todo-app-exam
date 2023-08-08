@@ -1,0 +1,106 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây
+tại local
+- git init //tạo repo local
+
+- touch c1.txt //tạo file c1.txt
+- git add c1.txt //đưa file c1 vào trạng thái staged
+- git commit -m "create file c1.txt" //tạo commit
+
+- touch c2.txt //tạo file c2.txt
+- git add c2.txt //đưa file c2 vào trạng thái staged
+- git commit -m "create file c2.txt" //tạo commit
+
+- touch c3.txt //tạo file c3.txt
+- git add c3.txt //đưa file c3 vào trạng thái staged
+- git commit -m "create file c3.txt" //tạo commit
+
+- git checkout -b feature master //tạo branch feature và chuyển HEAD sang branch feature vừa tạo 
+
+- touch c4.txt //tạo file c4.txt
+- git add c4.txt //đưa file c4 vào trạng thái staged
+- git commit -m "create file c4.txt" //tạo commit
+
+- touch c5.txt //tạo file c5.txt
+- git add c5.txt //đưa file c5 vào trạng thái staged
+- git commit -m "create file c5.txt" //tạo commit
+  
+- git checkout -b bug master //tạo branch bug và chuyển HEAD sang branch bug vừa tạo 
+
+- touch c6.txt //tạo file c6.txt
+- git add c6.txt //đưa file c6 vào trạng thái staged
+- git commit -m "create file c6.txt" //tạo commit
+- touch c7.txt //tạo file c7.txt
+- git add c7.txt //đưa file c7 vào trạng thái staged
+- git commit -m "create file c7.txt" //tạo commit
+- touch c8.txt //tạo file c8.txt
+- git add c8.txt //đưa file c8 vào trạng thái staged
+- git commit -m "create file c8.txt" //tạo commit 
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+- git checkout feature //chuyển HEAD sang branch feature
+- git merge bug //gộp nhánh bug vào nhánh feature
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+- git checkout bug //chuyển HEAD sang branch bug
+- git rebase feature //gộp nhánh feature vào nhánh bug
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+- Giống nhau: cả 2 lệnh git merge và git rebase đều được dùng để gộp nhánh
+- Khác nhau: 
+    + git merge: nếu trong quá trình gộp nhánh xuất hiện conflicts thì khả năng chỉ fix conflicts 1 lần.
+                 để lại lịch sử đã gộp 2 nhánh vào rồi.
+    + git rebase: nếu trong quá trình gộp nhánh xuất hiện conflicts thì khả năng chỉ fix conflicts nhiểu lần.
+                  không để lại lịch sử đã gộp 2 nhánh vào rồi.
+- khi nào nên sử dụng:
+    + git merge: khi gộp 2 nhánh trên remote
+    + git rebase: khi push code lên remote bị rejected
+
+5. Phân biệt git fetch và git clone
++ git fetch: đồng bộ trên remote về local với điều kiện remote và local và đã mapping với nhau
++ git clone: tải về(source + history tree) remote repo về local
+
+6. Phân biệt git fetch và git pull
++ git fetch: 100% thành công -> đồng bộ dữ liệu mới nhất từ remote về local mà không bị conflicts 
++ git pull: lấy dữ liệu mới nhất từ remote về local nhưng sau đó thực hiện git merge dễ gây ra conflicts 
+
+7. Phân biệt git pull và git pull --rebase
++ git pull: là rút gọn của 2 lệnh git fetch và git merge
++ git pull --rebase: là rút gọn của 2 lệnh git fetch và git rebase
+
+8. Git log dùng để làm gì
++ git log: giúp ta xem lại thông tin lịch sự commit, nhằm giám sát sự thay đổi của dự án.
+
+9. Git status dùng để làm gì
+- git status: dùng để hiện thị trạng thái, được sử dụng nhiều để hiện thị trạng thái của git add và git commit 
+
+10. Git add dùng để làm gì
+- git add: dùng để đưa file vào trạng thái staged
+
+11. Git commit dùng để làm gì
++ git commit: dùng để tạo ra commit lưu lại phiên bản
+
+12. Mô tả lệnh để tạo branch ở local
++ git branch name_branch // dùng để tạo 1 nhánh ở local
+
+13. Mô tả lệnh để xóa branch ở local
++ git branch -D branch_deleted
+
+14. Mô tả lệnh để xóa branch ở remote
++ git push origin --delete branch_deleted
+
+15. Nhánh trung gian là gì
+
+16. Detach HEAD là gì
+
+17. Phân biệt HEAD và BRANCH
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+- có 4 trạng thái file trong git: 
+    + Untracked
+    + Unmodified
+    + Modified
+    + Staged
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
