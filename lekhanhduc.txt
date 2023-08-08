@@ -1,0 +1,98 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây
+tại local
+
+git init
+touch c1.txt
+git add c1.txt
+git commit
+
+touch c2.txt
+git add c2.txt
+git commit
+
+touch c3.txt
+git add c3.txt
+git commit
+
+touch c4.txt
+git add c4.txt
+git commit
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+git checkout feature
+git meger bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+git checkout bug
+git rebase feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+Giống: đều sử dụng để gộp 2 nhánh có cùng điểm chung, nếu conflict thì fix bug
+Khác: 
++Meger: lấy code mới nhất ở 2 nhánh, sử dụng cho việc gộp 2 nhánh có nhiều commit.
++Rebase: so sánh từng commit ở trên với từng commit muốn gộp, sau đó lấy commit tiếp tục so sánh với commit tiếp theo của nhánh muốn gộp
+
+5. Phân biệt git fetch và git clone
++fetch: đồng bộ remote về local
++clone: dowload toàn bộ dữ liệu từ remote về local
+
+6. Phân biệt git fetch và git pull
+fetch: đồng bộ từ remote về local\
+pull = fetch +
+
+7. Phân biệt git pull và git pull --rebase
+
+8. Git log dùng để làm gì
+
+9. Git status dùng để làm gì
+show commit hiện tại và những commit cha của nó
+
+10. Git add dùng để làm gì
+thêm file
+
+11. Git commit dùng để làm gì
+lưu file vào repo
+
+12. Mô tả lệnh để tạo branch ở local
+git branch new_branch hash
+
+13. Mô tả lệnh để xóa branch ở local
+
+14. Mô tả lệnh để xóa branch ở remote
+  + xóa nhánh ở remote --> git push origin remote_branch -d
+
+15. Nhánh trung gian là gì
+
+16. Detach HEAD là gì
+
+17. Phân biệt HEAD và BRANCH
+Branch:
++ Con trỏ
++ Có thể có rất nhiều nhánh với tên bất kỳ
++ Trỏ đến được COMMMIT
++ 'Đại diện cho 1 VERSION của PROJECT'
+
+HEAD:
++Con trỏ
++ Có duy nhất 1 con trỏ HEAD
++ Trỏ đến được BRANCH, COMMIT(detach HEAD)
++ Đại diện cho WORKING DIRECTORY
++ Có thể di chuyển mọi nơi thông qua lệnh CHECKOUT
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+Có 2 cách xóa commit:
+Cách 1: xóa commit và xóa luôn nội dung
+--> git reset --hard HEAD-n (n là số lượng commit tính từ hiện tại)
+cách 2: xóa commit nhưng giữ lại nội dung
+--> git reset --soft-n( n là số lượng commit tính từ hiện tại)
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+
+ untracked: mới tạo ra
+ unmodified x: mới được commit
+ modified: trước đó đã được commit --> sửa
+ staged: ready to commit
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+Task đó thực hiện cho version nào
+version này được làm trên branch nào
