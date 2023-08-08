@@ -1,1 +1,1 @@
-# java21-todo-app-exam
+VERSION: todo-app-4.0-snapshot
