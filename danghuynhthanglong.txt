@@ -1,0 +1,78 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây tại local
+git init....
+touch c1.txt
+Touch c2.txt
+Touch c3.txt
+git checkout -b feature master
+touch c4.txt
+Touch c5.txt
+Git checkout master
+git checkout -b bug master
+touch c6.txt
+Touch c7.txt
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+Git checkout feature
+Git merge bug
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+Git checkout bug 
+Git rebase feature
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+giống nhau:
+Git merge và git rebase dùng để gộp nhánh
+khác nhau:
+Git merge sẽ tạo ra commit merge và làm xấu
+Git rebase không tạo ra commit mới, tree sẽ đẹp hơn
+Nên sử dụng git merge khi có ít commit còn rebase nên sử dụng khi có nhiều commit
+5. Phân biệt git fetch và git clone
+Git fetch là lấy dữ liệu từ remote khi 2 máy đã có kho chứa và đã được ánh xạ với nhau
+Git clone là lấy dữ liệu từ remote khi máy chưa có gì cả
+6. Phân biệt git fetch và git pull
+git fetch là lấy toàn bộ dữ liệu
+Git pull là lấy dữ liệu trong nhánh
+7. Phân biệt git pull và git pull --rebase
+
+
+8. Git log dùng để làm gì
+Git log dùng để kiểm tra nhánh hiện có
+9. Git status dùng để làm gì
+Git status dùng để kiểm tra tình trạng kho chứa
+
+10. Git add dùng để làm gì
+Git add dùng để add 1 commit vào staged
+11. Git commit dùng để làm gì
+git commit dùng để đưa file vào trạng thái unmodifiled
+12. Mô tả lệnh để tạo branch ở local
+Git checkout -b new_branch old_branch
+13. Mô tả lệnh để xóa branch ở local
+Git -d branch_name 
+14. Mô tả lệnh để xóa branch ở remote
+Git branch -D
+15. Nhánh trung gian là gì
+Nhánh trung gian là nhánh sau khi fetch dữ liệu từ remote về local, nhánh trung gian không thể có head trỏ đến
+16. Detach HEAD là gì
+Detach head xảy ra khi cố checkout head qua nhánh trung gian
+17. Phân biệt HEAD và BRANCH
+Head có thể trỏ đến branch nhưng branch không thể trỏ đến head
+Branch là 1 version của dự án chứa nhiều commit
+Head không thể trỏ đến commit còn branch thì được
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+Git reset head^n với n là số commit muốn xóa
+Git commit --amend -m
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+Có 4 trạng thái
+Untrack là file khi chưa được đưa vào commit
+Unmodifiled là file đã đưa vào commit
+Modifiled
+Staged file được add sau khi tạo
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+Đặt câu hỏi trước khi làm task
+-Làm cho version nào?
+-Làm từ nhánh nào?
+----LOCAL-----
+B1: Git fetch đối với máy đã ánh xạ và git clone URL đối với máy trống
+B2: GIt checkout task ....
+Coding
+Add, commit
+Push

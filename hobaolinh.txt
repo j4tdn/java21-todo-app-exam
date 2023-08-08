@@ -1,0 +1,101 @@
+1.
+Commit 1: tạo file c1.txt/ git add c1.txt / git commit -m "1"
+Commit 2: tạo file c2.txt/ git add c1.txt / git commit -m "2"
+Commit 3: tạo file c3.txt/ git add c1.txt / git commit -m "3"
+	 git checkout -b feature
+Commit 4: tạo file c4.txt/ git add c1.txt / git commit -m "4"
+Commit 5: tạo file c5.txt/ git add c1.txt / git commit -m "5"
+	 git checkout -b bug master
+Commit 6: tạo file c6.txt/ git add c1.txt / git commit -m "6"
+Commit 7: tạo file c7.txt/ git add c1.txt / git commit -m "7"
+Commit 8: tạo file c8.txt/ git add c1.txt / git commit -m "8"
+
+2.
+$git checkout feature 
+$git merge bug
+
+3.
+$git checkout feature
+$git rebase bug
+
+4.
+điểm giống:
+- đều dùng để gộp nhánh
+- thu được kết quả giống nhau
+- kết quả giống nhau khi gộp nhánh trên cùng 1 đường
+điểm khác:
+- merge: 
++ tạo commit mới 
++ gộp nhánh có nhiều commit, giảm thời gian do conflict
+- rebase
++ ko tạo ra commit mới ( tạo, xóa commit )
++ tốn nhiều tgian nếu branch nhiều commit và bị conflict
+-khác khi gộp nhánh rẽ hướng
+
+5.
+pb git fecth và git clone
+- git clone tải toàn bộ dữ liệu từ repo remote về repo local
+- git fecth cập nhật dữ liệu có sự thay đổi hoặc đổi mới từ repo remote
+
+6.
+-git fetch cập nhật dữ liệu về repo local và chưa merge hoặc rebase
+- git pull = git fetch + git merge | git rebase
+
+7.
+- git pull = git fetch + git merge ( tạo ra commit mới )
+- git pull --rebase 
+
+8.git log dùng để xem lịch sử commit.
+
+9.
+git status dùng để xem trạng thái của các file ở các dạng: untrack, unmodifide| modifide | staged.
+
+10.
+git add dùng để đưa file về trạng thái chuẩn bị để commit ( staged )
+
+11.
+git commit dùng để lưu và thể hiện thời điểm lưu khi có sự thay đổi.
+
+12.
+$ git branch < tên branch > <branch local>
+
+13.
+$ git branch < tên branch > -d|-D
+
+14.
+$git push origin < tên branch> -d
+
+15.
+Nhánh trung gian dùng để ánh xạ từ nhánh remote đến nhánh ở local
+
+16.
+HEAD: là con trỏ chỉ vị trí lấy code để đưa vào working-space
+
+17.
+HEAD: là con trỏ chỉ vị trí lấy code để đưa vào working-space
+BRANCH: là nhánh chứa các commit
+
+18.
+- sử dụng reset
+git reset --hard HEAD^
+- sử dụng --amend
+
+19.
+các trạng thái của file trong git:
+- untrack chưa từng được commit
+- unmodified đã từng commit
+- modified đã commit và tiến hành sửa đổi
+- stage đã add để chuẩn bị commit
+
+20.
+sau khi nhận 1 task tiến hành các bước sau:
+- xem task nằm ở version nào
+- xem version đó đang thực hiện ở branch nào
+- git fetch ( lấy code mới nhất)
+- git checkout -b task-xx origin/<tên nhánh trên remote>
+- tiến hành coding
+- git add, git commit
+- git push 
+
+
+ 

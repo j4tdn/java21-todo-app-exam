@@ -1,0 +1,18 @@
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
++ git checkout bug
++ git merge future
+3.Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+git checkout bug
+git rebase feature
+4.Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
++merge tạo ra 1 commit merge 
++ rebase tạo k tạo ra commit 
++ sử dụng merge nếu muốn sắp xếp các commit theo 1 hướng nhất định
++ sử dụng rebase tạo ra ít commit và dễ nhìn
+5.Phân biệt git fetch và git clone
++ clone là tạo bản sao của dự án từ remote về local
++ fetch là lấy các commit từ dự án về máy 
+17.Phân biệt HEAD và BRANCH
++ HEAD như là 1 con trỏ chuột chỉ đến phiên bản hiện tại đang làm việc
++ BRANCH là 1 nhánh trong 1 dự án hay là 1 phiên bản s
+
