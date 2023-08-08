@@ -1,0 +1,168 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây
+tại local
+git init
+touch c1.txt
+git add .
+git commit -m "C1"
+
+touch c2.txt
+git add .
+git commit -m "C2"
+
+touch c3.txt
+git add .
+git commit -m "C3"
+
+git checkout -b feature master
+
+touch c4.txt
+git add .
+git commit -m "C4"
+
+touch c5.txt
+git add .
+git commit -m "C5"
+
+git checkout -b bug master
+ 
+touch c6.txt
+git add .
+git commit -m "C6"
+
+touch c7.txt
+git add .
+git commit -m "C7"
+
+touch c8.txt
+git add .
+git commit -m "C8"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+git checkout feature
+git merge bug
+
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+git checkout bug
+git rebase bug
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+giống:
+	+ đều dùng để gộp nhánh 
+	+ đều tạo ra commit mới (mã hash)
+	+ khi gộp 2 nhánh trên một đường thẳng là như nhau
+	+ 
+
+khách nhau
+	merge:
+		+ khi commit sẽ ra nhiều commit
+		+ thứ tự commit không theo thời gian khi push lên remote => khó theo dõi, quản lý
+		+ fix 1 lần
+
+	rebase:
+		+ khi gộp thì không làm thay đổi số lượng commit
+		+ Dễ theo dõi theo thời gian push
+		+ fix nhiều lần nếu nếu nhiều commit cần gộp, hay người push liên tục lên remote
+
+Nên sử dụng merge khi gộp 2 nhánh, chứa nhiều commit nên chỉ fix 1 lần
+
+		rebase nên được dùng khi có nhiều người làm cùng dự án, và có nhiều branch 
+
+5. Phân biệt git fetch và git clone
+
+	git fetch:  + lấy toàn bộ dữ liệu chứa commit mới nhất về repo
+			+ khi local đã được ánh xạ với remote
+			+
+
+	git clone:  + khi ở local chưa ánh xạ với remote
+			+ local chưa có repo
+
+6. Phân biệt git fetch và git pull
+	git fetch (như câu 5)
+
+	git pull là sự kết hợp của git fetch và git merge
+
+7. Phân biệt git pull và git pull --rebase
+
+	git pull = git fetch + git merge
+
+	git pull --rebase git fetch + git rebase
+
+8. Git log dùng để làm gì
+	git log   + hiển thị các commit(bao gồm mã hash đầy đủ), tên người thực hiên, ngày giờ thực hiên
+		    + hiển thị các commit mà hiện tại HEAD đang trỏ tới cái branch
+
+	
+
+9. Git status dùng để làm gì
+	git status:
+			+ hiển thị các trạng thái của các file 
+			
+10. Git add dùng để làm gì
+
+	git add:
+			+ để chuyển các file ở trạng thái untracked, modifiled sang trạng thái staged
+
+11. Git commit dùng để làm gì
+	git commit: chuyển file từ trạng thái staged sang trạng thái unmodified
+
+12. Mô tả lệnh để tạo branch ở local
+	git branch newbranch : tạo nhánh mới 
+	
+	git branch [newbranch] [branch muốn newbranch trỏ tới]
+
+	git checkout -b newbranch [branch muốn newbranch trỏ tới] : đưa HEAD trỏ đến newbranch và đồng thời newbranch được tạo từ branch muốn trỏ tới
+
+13. Mô tả lệnh để xóa branch ở local
+	git branch [namebranch] -d : xoá branch chỉ chứa những commit thuộc riêng branch đó
+
+	git branch [nambranch] -D  : xoá branch mà chứa các commit thuộc nhiều branch khác
+14. Mô tả lệnh để xóa branch ở remote
+
+	C1: lên remote xoá trực tiếp ở trên
+
+	C2: push origin tên_branch-remote -d : dùng lệnh trong local đã đc ánh xạ với remote để xoá
+15. Nhánh trung gian là gì
+	+ nhánh trung gian là nhánh để tương tác giữa local và remote
+	+ thường được hiểu với [alias]\remote_branch
+	+ nhánh mà HEAD không thể trỏ trực tiếp đến
+
+16. Detach HEAD là gì
+	+ là HEAD trỏ trực tiếp đến commit mà không thông qua branch
+	+ Hay commit đó không thuộc bất kỳ branch nào
+
+17. Phân biệt HEAD và BRANCH
+	HEAD:
+		+ trỏ được đến commit và branch
+		+ khi HEAD trỏ đến commit hay branch nào thì sẽ hiển thị working directory ở đó
+		+
+	BRANCH:
+		+ chỉ trỏ đến commit
+		+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+	+ xoá commit (xoá messege và cả nội dung)
+		git reset hard HEAD~n
+	+ xoá commit (chỉ xoá messege)
+		gỉ reset sort HEAD~n
+	+git commit amend -m "messesge mới": ghi đè messesge mới lên messeges cũ đồng thời đổi luôn mã hash
+	
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+	untracked: vừa mới touch, tạo lần đầu 
+	modifiled: file đã được commit trước đó (unmodified), notepad để sửa chuyển thành modified
+	unmodified: file đã được commit
+	staged: file đã được add
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+	+ kiểm tra xem task thuộc version nào?
+	+ version đó thuộc nhánh nào?
+	+ nếu mới bắt đầu ở local thì git clone để lấy toàn bô dự án về
+	(ánh xạ với remote)
+	+ tạo nhánh ở local từ nhánh trung gian của dự án
+	+ thực thi: touch, notepad,.... (coding)
+	+ Commit
+	+ fetch lại lần nữa để đảm bảo quá trình thực (lấy dữ liệu mới nhất về local)
+	+ tiến hành push
+	+ nếu lỗi reject, 
+	+ thì rabase hoặc merge
+	+ xuất hiện conflict thì fix
+	+ fix xong tiến hành push code
