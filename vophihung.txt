@@ -1,0 +1,127 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây
+tại local
+git init
+touch c1.txt
+git add c1.txt
+git commit -m "Add file c1"
+touch c2.txt
+git add c2.txt
+git commit -m "Add file c2"
+touch c3.txt
+git add c3.txt
+git commit -m "Add file c3"
+git checkout -b feature master
+touch c4.txt
+git add c4.txt
+git commit -m "Add file c4"
+touch c5
+git add c5.txt
+git commit -m "Add file c5"
+git checkout -b bug master
+touch c6.txt
+git add c6.txt
+git commit -m "Add file c7"
+touch c8.txt
+git add c8.txt
+git commit -m "Add file c8"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+git checkout feature
+git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+git checkout bug
+git rebase feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+git merge branch-name
+git rebase branch-name
+--> giống: Đều có chức năng gộp các commit ở nhánh này vào nhánh khác
+--> khác: 
+- Merge sẽ tạo ra 1 commit mới bằng sự kết hợp của 2 commit mới của 2 nhánh với commit cha gần nhất và merge tạo ra history tree rẻ nhánh nhiều
+- Rebase sẽ tạo ra số commit tương ứng với số commit của nhánh đi gộp và rebase tạo ra history tree là đường thẳng
+--> Khi nào nên sử dụng:
+	+ Merge: Gộp 2 nhánh của dự án 
+	+ Rebase: Khi push các commit từ local lên remote
+
+5. Phân biệt git fetch và git clone
+git fetch origin remote-branch: Đồng bộ data mới nhất ở remote về local
+git clone url: Liên kết và lấy folder từ dự án (remote) về local 
+
+6. Phân biệt git fetch và git pull
+git fetch origin remote-branch
+git pull origin remote-branch
+--> git pull = git fetch + git merge
+
+7. Phân biệt git pull và git pull --rebase
+git pull origin remote-branch
+git pull --rebase origin remote-branch
+--> git pull --rebase = git fetch + git rebase 
+
+8. Git log dùng để làm gì
+--> Xem các thông tin và lịch sử của các commit 
+
+9. Git status dùng để làm gì
+--> Xem trạng thái của các file
+
+10. Git add dùng để làm gì
+--> Đưa file từ trạng thái Untracked hoặc Modified vào Staged
+
+11. Git commit dùng để làm gì
+--> Để lưu lại 1 task (chức năng) được code vào git
+
+
+12. Mô tả lệnh để tạo branch ở local
+git branch new-branch-name hash
+git branch new-branch-name old-branch-name
+
+13. Mô tả lệnh để xóa branch ở local
+git branch -d branch-name --> khi trong branch kh chứa commit nào kh thuộc bất cứ branch nào 
+git branch -D branch-name --> ngược lại d nhỏ
+
+14. Mô tả lệnh để xóa branch ở remote
+git branch -d origin branch-name
+git branch -D  origin branch-name
+
+15. Nhánh trung gian là gì
+--> Là nhánh được tự động tạo nên khi liên kết remote với local
+--> Nhánh trung gian đại diện của nhánh của remote tại local 
+vd: nhánh ở remote: todo-app-1.0 thì nhánh trung gian: origin/todo-app-1.0
+
+16. Detach HEAD là gì
+--> Là khi HEAD trỏ vào commit
+
+17. Phân biệt HEAD và BRANCH
+--> HEAD: Là 1 con trỏ 
+Có duy nhất 1 con trỏ HEAD, 
+Trỏ đến được Branch, commit(detach HEAD)
+Đại diện cho Working DIRECTORY
+Có thể di chuyển mọi nơi bằng lệnh Checkout
+--> BRANCH:  Là nhánh (mặc định), con trỏ trỏ đến commit
+có rất nhiều nhánh với tên bất kỳ, trỏ đến được COMMIT 
+Đại diện cho 1 version của Project
+Có thể di chuyển thông qua HEAD 
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+--> Có 2 cách:
+- C1: Xóa commit, xóa luôn nội dung của commit
+vd: git reset -hard HEAD~n (n là số lượng commit tính từ commit hiện tại)
+- C2: Xóa commit, vẫn giữ nội dung của commit
+vd: git rest soft HEAD~n (n là số lượng commit tính từ commit hiện tại)
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+--> Untracked: File mới tạo
+--> Unmodified: File đã được commit 
+--> Modified: File đã được commit và sửa nội dung
+--> Staged: File sẵn sàng được commit
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+--> Khi nhận 1 task cần xác định:
++ Task đấy code cho version nào
++ Nhánh dùng để code là nhánh nào
+git fetch
+git checkout -b task origin/branch-name
+touch
+git add
+git commit
+push
