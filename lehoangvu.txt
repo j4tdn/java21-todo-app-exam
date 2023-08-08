@@ -1,0 +1,102 @@
+1. Vi?t chuong trình/l?nh trong t?p tin hoten.txt mô t? các bu?c th?c hi?n so d? git tree sau dây
+t?i local
+	+git init
+	+touch c1.txt
+	+git add c1.txt
+	+git commit -m "Add c1"
+	+touch c2.txt
+	+git add c2.txt
+	+git commit -m "Add c2"
+	+touch c3.txt
+	+git add c3.txt
+	+git commit -m "Add c3"
+	+git checkout -b bug master
+	+touch c6.txt
+	+git add c6.txt
+	+git commit -m "Add c6"
+	+touch c7.txt
+	+git add c7.txt
+	+git commit -m "Add c7"
+	+touch c8.txt
+	+git add c8.txt
+	+git commit -m "Add c8"
+	+git checkout -b feature master
+	+touch c4.txt
+	+git add c4.txt
+	+git commit -m "Add c5"
+
+
+
+2. Vi?t l?nh th?c hi?n g?p nhánh bug vào nhánh feature s? d?ng git merge
+	+git checkout bug
+	+git merge bug feature
+3. Vi?t l?nh th?c hi?n g?p nhánh feature vào bug s? d?ng git rebase
+	+ git checkout bug
+	+ git rebase feature
+4. Phân bi?t git merge và git rebase(gi?ng, khác nhau, khi nào nên s? d?ng)
+	+Gi?ng:
+		+Ð?u dùng d? g?p nhánh
+	+Khác: Rebase: +Không sinh ra commit merge làm x?u history trees
+			+Các commit s? n?m trên 1 du?ng th?ng
+		Merge:  +Xem l?i du?c l?ch s? merge
+			+Khi có r?t nhi?u commit lúc merge x? d? b? conflicts ph?i fix r?t nhi?u l?n
+			+Nên dùng d? g?p 2 nhánh c?a 1 d? án
+5. Phân bi?t git fetch và git clone
+	git fetch: c?p nh?t các tham chi?u t? xa
+	git clone: t?o 1 b?n sao g?n nhu t?t các các t?p tin t? remote
+6. Phân bi?t git fetch và git pull
+	git pull là g?p gi?a 2 l?nh git fetch và git merge
+7. Phân bi?t git pull và git pull --rebase
+	git 
+8. Git log dùng d? làm gì
+	git log: Ð? hi?n th? t?t c? các commit 
+9. Git status dùng d? làm gì
+	git status: xem tr?ng thái c?a t?p tin
+10. Git add dùng d? làm gì
+	git add: Dùng d? thêm t?p tin vào stage
+11. Git commit dùng d? làm gì
+	dua t?p tin v? tr?ng thái unmodifile luu tr?ng thái hi?n t?i
+12. Mô t? l?nh d? t?o branch ? local
+ 	git branch <tennhanh>
+	git branch <tennhanh> HEAD
+	git branch <tennhanh> mã hash
+	git branch <tennhanh moi> <tennhanhcu> 
+13. Mô t? l?nh d? xóa branch ? local
+	git branch -D <tennhanh>
+14. Mô t? l?nh d? xóa branch ? remote
+	git push origin remote_branch -d
+15. Nhánh trung gian là gì
+	Nhánh trung gian là nhánh khi fetch t? remote v? s? t?o 1 nhánh trung gian origin/tennhanh do chúng ta 
+16. Detach HEAD là gì
+17. Phân bi?t HEAD và BRANCH-HEAD 
+ HEAD + con tr?
+      + Có duy nh?t 1 con tr? HEAD
+      + Tr? d?n du?c BRANCH, COMMIT (detach HEAD)
+      + Ð?i di?n cho WORKING DERECTORY
+      + Có th? di chuy?n du?c m?i noi thông qua l?nh CHECKOUT
+ 
+
+BRANCH(m?c d?nh master)
+	+Nhánh (m?c d?nh)
+	+Con tr?
+	+Có th? có r?t nhi?u nhánh v?i tên b?t k?
+	+Tr? d?n du?c COMMIT
+	+Ð?i di?n cho 1 version c?a PROJECT
+	+Có th? di chuy?n thông qua HEAD
+
+18. Có m?y cách d? xóa commit, mô t? và cho ví d?
+	git reset --hard HEAD~n
+	git branch -D tennhanh
+19. Li?t kê các tr?ng thái c?a file trong git, gi?i thích t?ng tr?ng thái
+ Untracked kh?i t?
+Unmodifiled v?a du?c commit
+Modifiled s?a file
+stage
+20. Mô t? các bu?c c?n th?c hi?n khi nh?n 1 task t? d? án, cho ví d?
+1. T?o d? án folder(todo app demo)
+
++ git init --> kh?i t?o kho ch?a
++ t?o file readme.txt
++ n?i dung tr?ng
++ git add, commit "Initial project"
++ Khi làm xong thì ph?i release.., fix bug tr? v? nhánh c?n fix, ti?p t?c code
