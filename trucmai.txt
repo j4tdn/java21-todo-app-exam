@@ -1,0 +1,115 @@
+1. Viết chương trình/lệnh trong tập tin hoten.txt mô tả các bước thực hiện sơ đồ git tree sau đây tại local
+
+(Em làm kh kịp anh ơi :(( ) 
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+
+ - git checkout feature -> git merge bug 
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+ - git checkout bug -> git rebase feature
+
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng) 
+ Giống: 
+- Cả 2 đều chung 1 mục đích là gộp
+- Nếu cùng nằm trên 1 nhánh thì cả git merge và git rebase đều thực hiện những bước như nhau. Gộp cha vào con -> up-to-date
+                               Gộp con vào cha -> fast-forwards
+Khác: khi gộp 2 nhánh
+NO CONFLICT: 
+git fetch -> git merge -> git add -> git commit -m  "..." -> git push
+
+git fetch -> git rebase -> git push 
+
+CONFLICT: 
+git fetch -> git merge -> có conflict, mở file lên sửa, lưu -> git add -> git commit -m  "..." -> git push
+
+git fetch -> git rebase -> có conflict, sửa  -> git rebase --continue
+
+ + Khi nào nên sử dụng: 
+
+- Dùng merger khi gộp 2 nhánh của dự án 
+lí do:  + Có nhiều commit nếu dùng rebase sẽ fix conflicts rất nhiều lần
+        + Xem được lịch sử đã merge 2 nhánh đó khi nào 
+
+- Dùng rebase khi mình push code mà bị reject thì mình phải fetch nhánh trung gian về rồi sau đó gộp cái nhánh trung gian vào nhánh hiện tại sau đó push lên lại 
+(push code --> reject ? fetch --> gộp --> push lên lại) 
+
+Lí do: + Thường là sẽ push lên 1 commit 1 lần
+       + Khi bị reject --> rebase --> không tạo ra commit merge --> xấu history tree
+
+        
+5. Phân biệt git fetch và git clone
+
+git fetch sử dụng khi ở local và remote đã được ánh xạ với nhau 
+
+git clone sử dụng khi ở remote đã có repository, ở local chưa có gì
+
+6. Phân biệt git fetch và git pull
+
+- git fetch là lấy một đối tượng và refs từ một repository 
+
+- git pull là kết hợp giữ fetch và merge, lấy đối tượng về gộp nó với một repository khác hoặc một local branch
+
+7. Phân biệt git pull và git pull --rebase
+
+git pull là sự kết hợp giữa git fetch và git merge  
+ 
+git --rebase là sự kết hợp giữa git fetch và git rebase 
+
+8. Git log dùng để làm gì
+Dùng để xem lịch sử commit cụ thể do ai commit, thời gian nào, tên commit,..
+
+9. Git status dùng để làm gì
+Dùng để xem trạng thái của working tree
+Ví dụ như những file (ngoại trừ file rỗng) được git quản lí sẽ hiển thị trạng thái như: untracked, staged, modified
+
+10. Git add dùng để làm gì
+Dùng để thêm nội dung file vào index 
+
+11. Git commit dùng để làm gì
+Dùng để ghi lại những thay đổi 
+
+12. Mô tả lệnh để tạo branch ở local
+git branch <tên branch>
+
+13. Mô tả lệnh để xóa branch ở local
+git branch -d <tên branch>
+
+14. Mô tả lệnh để xóa branch ở remote
+git push orign <remote_branch> -D 
+
+15. Nhánh trung gian là gì
+ 
+Nhánh trung gian là nhánh sẽ là nơi lữu trữ khi fetch code về trước khi thực hiện gộp
+
+16. Detach HEAD là gì
+17. Phân biệt HEAD và BRANCH
+
+HEAD 
++ con trỏ 
++ Có duy nhất 1 con trỏ HEAD
++ Trỏ đến BRACH, COMMIT(detach HEAD)
++ Đại diện cho WORKING DIRECTORY
++ Có thể di chuyển mọi nơi thông qua lệnh CHECKOUT
+
+BRANCH (master) 
++ Con trỏ 
++ Có thể có nhiều nhánh với tên bất kì
++ Trỏ đến được commit 
++ Đại diện cho 1 VERSION của PROJECT
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+Xóa commit vẫn giữ lại nội dung
+git commit --soft HEAD~n
+Xóa commit xóa nội dung
+git commit --hard HEAD~n
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+
+untracked, modified, unmodify, staged
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+Đặt 2 câu hỏi trước khi làm 1 task: 
+- Làm cho version nào? 
+- Làm từ nhánh nào 
